@@ -67,52 +67,52 @@ void fft_inverse(double complex t[MAX_SIZE], double complex s[MAX_SIZE], int n) 
 }
 
 void fft_forward_2d(double complex matrix[MAX_SIZE][MAX_SIZE], int width, int height) {
-  double complex t1[width];
-  double complex s1[width];
+  double complex t_lin[width];
+  double complex s_lin[width];
   for (int l = 0; l < height; l++){
     for (int c = 0; c < width; c++){
-      s1[c] = matrix[l][c];
+      s_lin[c] = matrix[l][c];
   }
-    fft_forward(s1, t1, width);
+    fft_forward(s_lin, t_lin, width);
     for (int c = 0; c < width; c++){
-      matrix[l][c] = t1[c];
+      matrix[l][c] = t_lin[c];
   }
 }
-  double complex t2[height];
-  double complex s2[height];
+  double complex t_col[height];
+  double complex s_col[height];
   for (int c = 0; c < width; c++){
     for (int l = 0; l < height; l++){
-      s2[l] = matrix[l][c];
+      s_col[l] = matrix[l][c];
   }
-    fft_forward(s2, t2, height);
+    fft_forward(s_col, t_col, height);
     for (int l = 0; l < height; l++){
-      matrix[l][c] = t2[l];
+      matrix[l][c] = t_col[l];
   }
 }
 return;
 }
 
 void fft_inverse_2d(double complex matrix[MAX_SIZE][MAX_SIZE], int width, int height) {
-  double complex t1[width];
-  double complex s1[width];
+  double complex t_lin[width];
+  double complex s_lin[width];
   for (int l = 0; l < height; l++){
     for (int c = 0; c < width; c++){
-      s1[c] = matrix[l][c];
+      s_lin[c] = matrix[l][c];
   }
-    fft_inverse(s1, t1, width);
+    fft_inverse(s_lin, t_lin, width);
     for (int c = 0; c < width; c++){
-      matrix[l][c] = t1[c];
+      matrix[l][c] = t_lin[c];
   }
 }
-  double complex t2[height];
-  double complex s2[height];
+  double complex t_col[height];
+  double complex s_col[height];
   for (int c = 0; c < width; c++){
     for (int l = 0; l < height; l++){
-      s2[l] = matrix[l][c];
+      s_col[l] = matrix[l][c];
   }
-    fft_inverse(s2, t2, height);
+    fft_inverse(s_col, t_col, height);
     for (int l = 0; l < height; l++){
-      matrix[l][c] = t2[l];
+      matrix[l][c] = t_col[l];
   }
 }
 return;
